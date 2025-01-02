@@ -5,6 +5,13 @@
     <div class="card-body">
         <h5 class="card-title text-primary">Entrar ou Registrar</h5>
         
+        <!-- Exibe erro de login -->
+        @if(session('loginError'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('loginError') }}
+            </div>
+        @endif
+
         <!-- Abas para Login e Registro -->
         <ul class="nav nav-tabs" id="authTabs" role="tablist">
             <li class="nav-item" role="presentation">
@@ -23,11 +30,21 @@
                     @csrf
                     <div class="mb-3">
                         <label for="text_username" class="form-label">Nickname</label>
-                        <input type="text" class="form-control" id="text_username" name="username" placeholder="Digite seu nickname" required>
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="text_username" name="username" placeholder="Digite seu nickname" value="{{ old('username') }}" required>
+                        @error('username')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="text_password" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="text_password" name="password" placeholder="Digite sua senha" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="text_password" name="password" placeholder="Digite sua senha" required>
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Entrar</button>
                 </form>
@@ -39,11 +56,21 @@
                     @csrf
                     <div class="mb-3">
                         <label for="text_username" class="form-label">Nickname</label>
-                        <input type="text" class="form-control" id="text_username" name="username" placeholder="Escolha seu nickname" required>
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="text_username" name="username" placeholder="Escolha seu nickname" value="{{ old('username') }}" required>
+                        @error('username')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="text_password" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="text_password" name="password" placeholder="Escolha sua senha" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="text_password" name="password" placeholder="Escolha sua senha" required>
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-success w-100">Registrar</button>
                 </form>

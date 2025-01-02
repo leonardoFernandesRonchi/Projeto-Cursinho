@@ -12,15 +12,15 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">Site Enem</a>
+            <a class="navbar-brand" href="/">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    @if(session('user'))
+                    @if(Auth::check()) <!-- Verifica se o usuário está autenticado -->
                         <li class="nav-item">
-                            <span class="nav-link text-white">Bem-vindo, {{ session('user.username') }}!</span>
+                            <span class="nav-link text-white">Bem-vindo, {{ Auth::user()->username }}!</span> <!-- Exibe o nome do usuário -->
                         </li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -46,10 +46,10 @@
             <div class="col-md-3">
                 <ul class="list-group">
                     <li class="list-group-item active bg-success text-white border-0">Redações</li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Simulados</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Exercícios</a></li>
+                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Provas Anteriores</a></li>
+                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('exercicios')}}" class="text-decoration-none text-dark">Gerador de Exercícios/Simulados</a></li>
                     <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Aulas</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Plano de Estudos</a></li>
+                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('study_plans.index')}}" class="text-decoration-none text-dark">Plano de Estudos</a></li>
                 </ul>
             </div>
 

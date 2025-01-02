@@ -4,84 +4,90 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /**
+     * Exibe a página de login e registro.
+     */
     public function login()
     {
-        // Exibe a página de login/registro
         return view('login');
     }
 
+    /**
+     * Processa o login do usuário.
+     */
     public function loginSubmit(Request $request)
     {
-        // Validação do formulário
-        $request->validate(
-            [
-                'username' => 'required',
-                'password' => 'required|min:6|max:16'
-            ],
-            [
-                'username.required' => 'O username é obrigatório',
-                'password.required' => 'A senha é obrigatória',
-                'password.min' => 'A senha deve ter pelo menos :min caracteres',
-                'password.max' => 'A senha deve ter no máximo :max caracteres'
-            ]
-        );
-
-        // Busca o usuário pelo username
-        $user = User::where('username', $request->username)->first();
-
-        // Verifica se o usuário existe e a senha está correta
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with('loginError', 'Username ou senha incorretos.');
-        }
-
-        // Login bem-sucedido
-        session([
-            'user' => [
-                'id' => $user->id,
-                'username' => $user->username
-            ]
+        // Validação dos campos
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ], [
+            'username.required' => 'O username é obrigatório.',
+            'password.required' => 'A senha é obrigatória.',
         ]);
 
-        return redirect()->to('/');
+        // Tentativa de login usando o Auth facade
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            // Regenera a sessão para segurança
+            $request->session()->regenerate();
+
+            // Redireciona para a página inicial ou para o destino pretendido
+            return redirect()->intended('/');
+        }
+
+        // Se o login falhar, retorna com erro
+        return back()->withErrors([
+            'loginError' => 'Login ou senha inválidos.',
+        ])->withInput();
     }
 
+    /**
+     * Processa o registro de um novo usuário.
+     */
     public function registerSubmit(Request $request)
     {
-        // Validação do formulário
-        $request->validate(
-            [
-                'username' => 'required|unique:users,username',
-                'password' => 'required|min:6|max:16'
-            ],
-            [
-                'username.required' => 'O username é obrigatório',
-                'username.unique' => 'Este username já está registrado',
-                'password.required' => 'A senha é obrigatória',
-                'password.min' => 'A senha deve ter pelo menos :min caracteres',
-                'password.max' => 'A senha deve ter no máximo :max caracteres'
-            ]
-        );
+        // Validação dos campos de registro
+        $request->validate([
+            'username' => 'required|alpha_num|unique:users,username',
+            'password' => 'required|string|min:6|max:16|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/',
+        ], [
+            'username.required' => 'O username é obrigatório.',
+            'username.alpha_num' => 'O username deve conter apenas letras e números.',
+            'username.unique' => 'Este username já está registrado.',
+            'password.required' => 'A senha é obrigatória.',
+            'password.min' => 'A senha deve ter pelo menos 6 caracteres.',
+            'password.max' => 'A senha deve ter no máximo 16 caracteres.',
+            'password.regex' => 'A senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número.',
+        ]);
 
         // Criação do usuário
         $user = User::create([
             'username' => $request->username,
-            'password' => bcrypt($request->password) // Criptografa a senha
+            'password' => Hash::make($request->password), // Hash da senha
         ]);
 
-        return redirect()->to('/login')->with('success', 'Registro realizado com sucesso. Faça login.');
+        // Login automático após registro
+        Auth::login($user);
+
+        return redirect()->to('/')->with('success', 'Registro realizado com sucesso!');
     }
 
-    public function logout()
+    /**
+     * Processa o logout do usuário.
+     */
+    public function logout(Request $request)
     {
-        // Logout do usuário
-        session()->forget('user');
-        return redirect()->to('/login');
+        Auth::logout();
+
+        // Invalida a sessão e regenera o token de segurança
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('success', 'Você saiu da sua conta.');
     }
 }

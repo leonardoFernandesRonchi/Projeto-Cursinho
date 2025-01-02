@@ -10,4 +10,8 @@ class MainController extends Controller
     {
         return view('main');
     }
+    public function exercicios()
+    {
+        return view('exercicios');
+    }
 }
