@@ -1,65 +1,77 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Enem</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.min.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
-</head>
-<body>
+@extends('layouts.main_layout')
+
+@section('content')
+<div class="container-fluid">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/">Inicio</a>
+            <a class="navbar-brand" href="#">Site Enem</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    @if(Auth::check()) <!-- Verifica se o usuário está autenticado -->
-                        <li class="nav-item">
-                            <span class="nav-link text-white">Bem-vindo, {{ Auth::user()->username }}!</span> <!-- Exibe o nome do usuário -->
-                        </li>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Sair</button>
-                        </form>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('login') }}">Registrar</a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registrar</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Conteúdo principal -->
-    <div class="container-fluid mt-4">
-        <div class="row">
-            <!-- Menu lateral -->
-            <div class="col-md-3">
-                <ul class="list-group">
-                    <li class="list-group-item active bg-success text-white border-0">Redações</li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Provas Anteriores</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('exercicios')}}" class="text-decoration-none text-dark">Gerador de Exercícios/Simulados</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Aulas</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('study_plans.index')}}" class="text-decoration-none text-dark">Plano de Estudos</a></li>
-                </ul>
+    <div class="row mt-4">
+        <!-- Menu lateral -->
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item active bg-success text-white border-0">Redações</li>
+                <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Simulados</a></li>
+                <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Exercícios</a></li>
+                <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Aulas</a></li>
+                <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Plano de Estudos</a></li>
+            </ul>
+        </div>
+
+        <!-- Área de conteúdo -->
+        <div class="col-md-9">
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Bem-vindo ao Site Enem</h5>
+                    <p class="text-muted">
+                        Este é o espaço ideal para você se preparar para o ENEM! Explore as opções no menu lateral e
+                        encontre ferramentas para organizar seus estudos, fazer simulados e melhorar sua redação.
+                    </p>
+                    <div class="alert alert-info" role="alert">
+                        Dica: Organize seus estudos e faça os simulados regularmente para melhorar seu desempenho!
+                    </div>
+                </div>
             </div>
 
-            <!-- Área de conteúdo -->
-            <div class="col-md-9">
-                @yield('content')
+            <!-- Card com informações adicionais -->
+            <div class="card shadow-lg border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Como Melhorar sua Redação</h5>
+                    <p>Leia as melhores dicas e exemplos de redação para se destacar no ENEM. Não deixe para estudar na última hora!</p>
+                    <a href="#" class="btn btn-primary">Leia as Dicas</a>
+                </div>
+            </div>
+
+            <!-- Card de materiais e links úteis -->
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <h5 class="card-title">Materiais de Estudo</h5>
+                    <ul>
+                        <li><a href="#" class="text-decoration-none">Apostilas Gratuitas</a></li>
+                        <li><a href="#" class="text-decoration-none">Vídeos de Aulas</a></li>
+                        <li><a href="#" class="text-decoration-none">Simulados Interativos</a></li>
+                    </ul>
+                    <a href="#" class="btn btn-success mt-3">Acesse os Materiais</a>
+                </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-</html>
+</div>
+@endsection
