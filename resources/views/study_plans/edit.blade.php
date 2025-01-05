@@ -3,7 +3,6 @@
 @section('content')
     <div class="container mt-5">
         <h1 class="text-center mb-4">Editar Plano de Estudo</h1>
-
         <form action="{{ route('study_plans.update', $studyPlan) }}" method="POST">
             @csrf
             @method('PUT')

@@ -1,0 +1,88 @@
+Prova de Laravel
+--------------------------------------------------
+
+Instruções: Responda as questões abaixo, marcando a alternativa correta.
+
+Questão 1:
+What is the name of the Jewish New Year?
+
+A. Rosh Hashanah
+B. New Year
+C. Succoss
+D. Elul
+
+Questão 2:
+The New York Times slogan is, &ldquo;All the News That&rsquo;s Fit to&hellip;&rdquo;
+
+A. Read
+B. Print
+C. Look
+D. Digest
+
+Questão 3:
+What is the nickname of the US state of California?
+
+A. Sunshine State
+B. Bay State
+C. Golden State
+D. Treasure State
+
+Questão 4:
+What machine element is located in the center of fidget spinners?
+
+A. Gears
+B. Bearings
+C. Belts
+D. Axles
+
+Questão 5:
+Which of these Marvel games was released on the Playstation 2?
+
+A. Spider-Man 2
+B. Wolverine: Adamantium Rage
+C. Howard the Duck
+D. Silver Surfer
+
+Questão 6:
+Waluigi&#039;s first appearance was in what game?
+
+A. Super Smash Bros. Ultimate
+B. Mario Tennis 64 (N64)
+C. Wario Land: Super Mario Land 3
+D. Mario Party (N64)
+
+Questão 7:
+In which fast food chain can you order a Jamocha Shake?
+
+A. McDonald&#039;s
+B. Arby&#039;s
+C. Wendy&#039;s
+D. Burger King
+
+Questão 8:
+How many colors are there in a rainbow?
+
+A. 9
+B. 8
+C. 10
+D. 7
+
+Questão 9:
+What is the shape of the toy invented by Hungarian professor Ernő Rubik?
+
+A. Cylinder
+B. Cube
+C. Pyramid
+D. Sphere
+
+Questão 10:
+Which of these colours is NOT featured in the logo for Google?
+
+A. Blue
+B. Green
+C. Pink
+D. Yellow
+
+
+--------------------------------------------------
+Fim da prova.

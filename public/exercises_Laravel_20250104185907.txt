@@ -1,0 +1,42 @@
+Exercícios de Enem (Laravel)
+
+What is the nickname of the US state of California? > 
+Resposta correta: Golden State
+Respostas incorretas: Sunshine State, Bay State, Treasure State
+
+Which of the following is not the host of a program on NPR? > 
+Resposta correta: Ben Shapiro
+Respostas incorretas: Terry Gross, Ira Glass, Peter Sagal
+
+Who is depicted on the US hundred dollar bill? > 
+Resposta correta: Benjamin Franklin
+Respostas incorretas: George Washington, Abraham Lincoln, Thomas Jefferson
+
+Terry Gilliam was an animator that worked with which British comedy group? > 
+Resposta correta: Monty Python
+Respostas incorretas: The Goodies&lrm;, The League of Gentlemen&lrm;, The Penny Dreadfuls
+
+Where is the train station &quot;Llanfair&shy;pwllgwyngyll&shy;gogery&shy;chwyrn&shy;drobwll&shy;llan&shy;tysilio&shy;gogo&shy;goch&quot;? > 
+Resposta correta: Wales
+Respostas incorretas: Moldova, Czech Republic, Denmark
+
+What is the shape of the toy invented by Hungarian professor Ernő Rubik? > 
+Resposta correta: Cube
+Respostas incorretas: Sphere, Cylinder, Pyramid
+
+In Half-Life, what is the name of the alien that attaches to heads? > 
+Resposta correta: Headcrab
+Respostas incorretas: Bullsquid, Vortigaunt, Facehugger
+
+What is the famous Papa John&#039;s last name? > 
+Resposta correta: Schnatter
+Respostas incorretas: Chowder, Williams, ANDERSON
+
+What alcoholic drink is made from molasses? > 
+Resposta correta: Rum
+Respostas incorretas: Gin, Vodka, Whisky
+
+Who invented the first ever chocolate bar, in 1847? > 
+Resposta correta: Joseph Fry
+Respostas incorretas: Andrew Johnson, John Cadbury, John Tyler
+

@@ -35,9 +35,9 @@ class AuthController extends Controller
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             // Regenera a sessão para segurança
             $request->session()->regenerate();
-
+            $request->session()->put('user', 'user');
             // Redireciona para a página inicial ou para o destino pretendido
-            return redirect()->intended('/');
+            return redirect()->route('home');
         }
 
         // Se o login falhar, retorna com erro
@@ -73,6 +73,8 @@ class AuthController extends Controller
 
         // Login automático após registro
         Auth::login($user);
+        $request->session()->put('user', 'user');
+
 
         return redirect()->to('/')->with('success', 'Registro realizado com sucesso!');
     }
@@ -88,6 +90,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'Você saiu da sua conta.');
+        return redirect()->route('home')->with('success', 'Você saiu da sua conta.');
     }
 }
