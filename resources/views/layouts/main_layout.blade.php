@@ -45,25 +45,23 @@
             <!-- Menu lateral -->
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item active bg-success text-white border-0">Redações</li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Provas Anteriores</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('exercicios')}}" class="text-decoration-none text-dark">Gerador de Exercícios/Simulados</a></li>
-                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="#" class="text-decoration-none text-dark">Aulas</a></li>
+                    <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('exercicios')}}" class="text-decoration-none text-dark">Gerador de Exercícios</a></li>
                     <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('study_plans.index')}}" class="text-decoration-none text-dark">Plano de Estudos</a></li>
                     <li class="list-group-item list-group-item-action bg-light border-0"><a href="{{route('getAnotacoes')}}" class="text-decoration-none text-dark">Anotações</a></li>
-
                 </ul>
             </div>
 
             <!-- Área de conteúdo -->
             <div class="col-md-9">
+                <div class="alert alert-primary" role="alert">
+                    Bem-vindo ao nosso portal! Aqui você encontra recursos organizados para auxiliar nos seus estudos de forma prática e eficiente.
+                </div>
                 @yield('content')
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="<script src="{{ asset('resources/js/main.js') }}"></script>
-"></script>
+    <script src="{{ asset('resources/js/main.js') }}"></script>
 </body>
 </html>
